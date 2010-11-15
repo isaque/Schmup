@@ -1,65 +1,89 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
+using Schmup.XnaGame.Common;
+using Schmup.XnaGame.Debug;
+using Schmup.XnaGame.Menus;
 
 namespace Schmup.XnaGame
 {
     public class SchmupGame : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        public InputState InputState { get; private set; }
+
+        public MainMenu MainMenu { get; private set; }
+        public OptionsMenu OptionsMenu { get; private set; }
+
+        private GraphicsDeviceManager graphics;
+        private SpriteBatch spriteBatch;
 
         public SchmupGame()
         {
+            Window.Title = "Schmup";
+            Window.AllowUserResizing = false;
+            IsMouseVisible = false;
+
             graphics = new GraphicsDeviceManager(this);
+            graphics.SynchronizeWithVerticalRetrace = false;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 720;
+            graphics.IsFullScreen = false;
+
+            // Set the framerate at 62.5 fps (i.e. about 60 fps)
+            IsFixedTimeStep = true;
+            TargetElapsedTime = new TimeSpan(0, 0, 0, 0, 16);
+
             Content.RootDirectory = "Content";
+
+            InputState = new InputState();
+
+            MainMenu = new MainMenu(this);
+            Components.Add(MainMenu);
+            OptionsMenu = new OptionsMenu(this);
+            Components.Add(OptionsMenu);
+
+#if DEBUG
+            FrameRateCounter frameRateCounter = new FrameRateCounter(this);
+            frameRateCounter.DrawOrder = 101;
+            Components.Add(frameRateCounter);
+            ComponentsTracer componentsTracer = new ComponentsTracer(this);
+            componentsTracer.DrawOrder = 102;
+            componentsTracer.AddComponent("Main Menu", MainMenu);
+            componentsTracer.AddComponent("Options Menu", OptionsMenu);
+            Components.Add(componentsTracer);
+#endif
         }
+
+        #region Game Members
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
-
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            // TODO: use this.Content to load your game content here
         }
 
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
         }
 
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-                this.Exit();
-
-            // TODO: Add your update logic here
+            InputState.Update();
 
             base.Update(gameTime);
         }
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
+            GraphicsDevice.Clear(Color.Black);
 
             base.Draw(gameTime);
         }
+
+        #endregion
     }
 }

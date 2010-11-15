@@ -107,9 +107,17 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\InputState.cs" />
+    <Compile Include="Common\SchmupDrawableGameComponent.cs" />
+    <Compile Include="Debug\ComponentsTracer.cs" />
+    <Compile Include="Debug\FrameRateCounter.cs" />
+    <Compile Include="Menus\MainMenu.cs" />
+    <Compile Include="Menus\Menu.cs" />
+    <Compile Include="Menus\MenuEntry.cs" />
+    <Compile Include="Menus\OptionsMenu.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="SchmupGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />
