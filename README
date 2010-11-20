@@ -2,7 +2,23 @@
 
     One month video game project @ Epita (http://www.epita.fr)
 
-AUTHORS
-  FERREIRA   Isaque  <ferrei_i@epita.fr>
-  PUYDOYEUX  Vincent <puydoy_v@epita.fr>
-  VINCENT    Nicolas <vincen_n@epita.fr>
+
+    I. CONTROLS
+        I.A Windows (Keyboard)
+        I.B XBox 360 Pad
+    II. AUTHORS
+
+
+I. CONTROLS
+I.A Windows (Keyboard)
+- Move with the arrows
+- Shoot with space
+
+I.B XBox 360 Pad
+- Move with the pad
+- Shoot with A
+
+II. AUTHORS
+- FERREIRA   Isaque  <ferrei_i@epita.fr>
+- PUYDOYEUX  Vincent <puydoy_v@epita.fr>
+- VINCENT    Nicolas <vincen_n@epita.fr>

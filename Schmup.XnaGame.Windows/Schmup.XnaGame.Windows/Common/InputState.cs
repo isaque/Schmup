@@ -108,6 +108,16 @@ namespace Schmup.XnaGame.Common
             }
         }
 
+        public bool ShootBullet
+        {
+            get
+            {
+                return IsNewKeyPress(Keys.Space)
+                    || (CurrentGamePadState.Buttons.A == ButtonState.Pressed
+                        && LastGamePadState.Buttons.A == ButtonState.Released);
+            }
+        }
+
         public void Update()
         {
             LastKeyboardState = CurrentKeyboardState;

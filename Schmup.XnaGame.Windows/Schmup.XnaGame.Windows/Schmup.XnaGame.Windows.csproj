@@ -111,6 +111,7 @@
     <Compile Include="Common\SchmupDrawableGameComponent.cs" />
     <Compile Include="DebugHelpers\ComponentsTracer.cs" />
     <Compile Include="DebugHelpers\FrameRateCounter.cs" />
+    <Compile Include="DebugHelpers\LevelTracer.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\ScoreManager.cs" />
     <Compile Include="Menus\MainMenu.cs" />
@@ -120,6 +121,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="SchmupGame.cs" />
+    <Compile Include="Sprites\Bullet.cs" />
     <Compile Include="Sprites\Ship.cs" />
     <Compile Include="Sprites\Sprite.cs" />
   </ItemGroup>

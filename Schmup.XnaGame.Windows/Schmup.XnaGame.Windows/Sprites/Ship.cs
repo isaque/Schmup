@@ -6,17 +6,18 @@ namespace Schmup.XnaGame.Sprites
 {
     public class Ship : Sprite
     {
+        private Vector2 ControlledVelocity = new Vector2(5);
+
         public Ship(SchmupGame game)
             : base(game)
         {
-            Velocity = new Vector2(5);
         }
 
         #region Sprite Members
 
         public override void Load()
         {
-            Texture = Game.Content.Load<Texture2D>("Textures/Game/Ship");
+            Texture = Game.Content.Load<Texture2D>("Textures/Game/Ship/Ship");
         }
 
         public override void Update(GameTime gameTime)
@@ -24,16 +25,17 @@ namespace Schmup.XnaGame.Sprites
             InputState input = Game.InputState;
             Vector2 position = Position;
             if (input.MoveLeft)
-                position.X -= Velocity.X;
+                position.X -= ControlledVelocity.X;
             if (input.MoveRight)
-                position.X += Velocity.X;
+                position.X += ControlledVelocity.X;
             if (input.MoveUp)
-                position.Y -= Velocity.Y;
+                position.Y -= ControlledVelocity.Y;
             if (input.MoveDown)
-                position.Y += Velocity.Y;
+                position.Y += ControlledVelocity.Y;
             position.X = MathHelper.Clamp(position.X, 0, 640 - Texture.Width);
             position.Y = MathHelper.Clamp(position.Y, 0, 720 - Texture.Height);
             Position = position;
+            base.Update(gameTime);
         }
 
         #endregion
