@@ -109,8 +109,8 @@
   <ItemGroup>
     <Compile Include="Common\InputState.cs" />
     <Compile Include="Common\SchmupDrawableGameComponent.cs" />
-    <Compile Include="Debug\ComponentsTracer.cs" />
-    <Compile Include="Debug\FrameRateCounter.cs" />
+    <Compile Include="DebugHelpers\ComponentsTracer.cs" />
+    <Compile Include="DebugHelpers\FrameRateCounter.cs" />
     <Compile Include="Levels\Level.cs" />
     <Compile Include="Levels\ScoreManager.cs" />
     <Compile Include="Menus\MainMenu.cs" />

@@ -2,7 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Schmup.XnaGame.Common;
-using Schmup.XnaGame.Debug;
+using Schmup.XnaGame.DebugHelpers;
 using Schmup.XnaGame.Levels;
 using Schmup.XnaGame.Menus;
 
