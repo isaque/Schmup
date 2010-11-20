@@ -72,6 +72,42 @@ namespace Schmup.XnaGame.Common
             }
         }
 
+        public bool MoveLeft
+        {
+            get
+            {
+                return CurrentKeyboardState.IsKeyDown(Keys.Left)
+                    || CurrentGamePadState.DPad.Left == ButtonState.Pressed;
+            }
+        }
+
+        public bool MoveRight
+        {
+            get
+            {
+                return CurrentKeyboardState.IsKeyDown(Keys.Right)
+                    || CurrentGamePadState.DPad.Right == ButtonState.Pressed;
+            }
+        }
+
+        public bool MoveUp
+        {
+            get
+            {
+                return CurrentKeyboardState.IsKeyDown(Keys.Up)
+                    || CurrentGamePadState.DPad.Up == ButtonState.Pressed;
+            }
+        }
+
+        public bool MoveDown
+        {
+            get
+            {
+                return CurrentKeyboardState.IsKeyDown(Keys.Down)
+                    || CurrentGamePadState.DPad.Down == ButtonState.Pressed;
+            }
+        }
+
         public void Update()
         {
             LastKeyboardState = CurrentKeyboardState;

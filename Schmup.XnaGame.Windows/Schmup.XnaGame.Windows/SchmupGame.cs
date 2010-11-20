@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Schmup.XnaGame.Common;
 using Schmup.XnaGame.Debug;
+using Schmup.XnaGame.Levels;
 using Schmup.XnaGame.Menus;
 
 namespace Schmup.XnaGame
@@ -13,6 +14,9 @@ namespace Schmup.XnaGame
 
         public MainMenu MainMenu { get; private set; }
         public OptionsMenu OptionsMenu { get; private set; }
+
+        public ScoreManager ScoreManager { get; private set; }
+        public Level Level { get; private set; }
 
         private GraphicsDeviceManager graphics;
         private SpriteBatch spriteBatch;
@@ -42,6 +46,12 @@ namespace Schmup.XnaGame
             OptionsMenu = new OptionsMenu(this);
             Components.Add(OptionsMenu);
 
+            ScoreManager = new ScoreManager(this);
+            Components.Add(ScoreManager);
+
+            Level = new Level(this);
+            Components.Add(Level);
+
 #if DEBUG
             FrameRateCounter frameRateCounter = new FrameRateCounter(this);
             frameRateCounter.DrawOrder = 101;
@@ -50,6 +60,8 @@ namespace Schmup.XnaGame
             componentsTracer.DrawOrder = 102;
             componentsTracer.AddComponent("Main Menu", MainMenu);
             componentsTracer.AddComponent("Options Menu", OptionsMenu);
+            componentsTracer.AddComponent("Score Manager", ScoreManager);
+            componentsTracer.AddComponent("Level", Level);
             Components.Add(componentsTracer);
 #endif
         }
@@ -64,10 +76,6 @@ namespace Schmup.XnaGame
         protected override void LoadContent()
         {
             spriteBatch = new SpriteBatch(GraphicsDevice);
-        }
-
-        protected override void UnloadContent()
-        {
         }
 
         protected override void Update(GameTime gameTime)
